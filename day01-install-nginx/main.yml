@@ -1,0 +1,22 @@
+---
+- hosts: app
+  become: yes
+  tasks:
+    - name: update the system cache
+      apt:
+        update_cache: yes
+    - name: install the nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: start the nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes    
+
+    - name: copy the web data
+      copy:
+        src: web-data/index.html
+        dest: /var/www/html/index.html
