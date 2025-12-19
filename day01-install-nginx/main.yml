@@ -10,11 +10,16 @@
         name: nginx
         state: present
 
-    - name: start the nginx
+    # - name: start the nginx
+    #   service:
+    #     name: nginx
+    #     state: started
+    #     enabled: yes    
+
+    - name: stop the service
       service:
         name: nginx
-        state: started
-        enabled: yes    
+        state: stopped
 
     - name: copy the web data
       copy:
