@@ -1,0 +1,11 @@
+---
+- hosts: app
+  become: yes
+  tasks:
+    - name: update the system cache
+      apt:
+        update_cache: yes
+    - name: install ncdu
+      apt:
+        name: ncdu
+        state: present
